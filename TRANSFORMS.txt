@@ -1,0 +1,21 @@
+Global Surface Temperatures Model
+
+This file will contain all encountered issues with our current model (Milestone #4):
+
+- The City entity table contains duplicate entries: the number of records is 8,235,082 while the number of distinct
+combinations of the date and city are 8,096,342. This suggests there are 138,740 duplicate records. From a high-level
+standpoint, the date and city combination are the most logical primary keys. This indicates that for a certain date and City,
+multiple temperatures were recorded. However, these records are duplicates but not completely; they only share the dt and City
+attributes which is causing the primary key violations (this is after making a distinct table for the model). It was difficult
+trying to find the duplicates that only share two attributes and we need to filter them out. 
+
+- Some filtering will be need to be made for making valid foreign keys; the most logical choice for  City, Country, and State
+entities is the dt attribute. Each currently has a foreign key violation, and so each needs to be filtered to remove
+temperatures recorded before the earliest Global Temperature recording. 
+
+Brief list of remaining standardization and normalization tasks (Milestone #5):
+- City Entity Table: remove duplicate records for dt-city combinations to address PK violation; filter out dates not included in Date Entity Table to address FK violation
+- State Entity Table: filter out dates not included in Date Entity Table to address FK violation
+- Country Entity Table: filter out dates not included in Date Entity Table to address FK violation
+
+NOTE: The remaining tasks were addressed as part of Milestone #6

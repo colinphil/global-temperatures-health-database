@@ -1,0 +1,79 @@
+Primary Dataset: Global Surface Temperatures from 1743   
+
+This dataset consists of surface land and ocean temperatures across the Earth split between towns, major cities, states,  
+countries, and the entire globe. It consists of five files with dates ranging from 1743 to as late as 2015, making it
+very feasible to analyze longterm global trends. We're interested in looking at temperature trends in certain areas of the 
+globe and selecting a secondary dataset that contains regional particulate data. The goal is to see if there is a connection
+between upticks of certain substances with regional surface land and ocean temperature.   
+
+The files can be downloaded from Kaggle at the following link:  
+https://www.kaggle.com/berkeleyearth/climate-change-earth-surface-temperature-data#GlobalTemperatures.csv
+
+A quick note regarding the tables: all temperatures are in Celsius and follow the year-month-date pattern.
+
+The first file is GlobalLandTemperaturesByCity.csv; its seven attributes are shown in the sample from the data:
+dt	         AverageTemperature	   AverageTemperatureUncertainty	City	Country	 Latitude   Longitude
+1743-11-01	 6.068	                   1.737	                        Århus	Denmark	 57.05N	    10.33E
+1744-04-01	 5.788	                   3.624	                        Århus	Denmark	 57.05N	    10.33E
+1744-05-01	 10.644	                   1.283	                        Århus	Denmark	 57.05N	    10.33E
+1744-06-01	 14.051	                   1.347	                        Århus	Denmark	 57.05N	    10.33E
+1744-07-01	 16.082	                   1.396	                        Århus	Denmark	 57.05N	    10.33E
+
+The second file is an extension of the previous, compiling it by country in GlobalLandTemperaturesByCountry.csv:
+dt             AverageTemperature        AverageTemperatureUncertainty        Country
+1743-11-01     4.384	                 2.294                                Åland
+1744-04-01     1.53                      4.68                                 Åland
+1744-05-01     6.702                     1.789                                Åland
+1744-06-01     11.609                    1.577                                Åland
+1744-07-01     15.342                    1.41                                 Åland
+
+The third file is a collection of temperature data from major cities in GlobalLandTemperaturesbyMajorCity.csv:
+dt             AverageTemperature        AverageTemperatureUncertainty  City	   Country        Latitude  Longitude
+1849-01-01     26.704	                 1.435                          Abidjan    Côte D'Ivoire  5.63N     3.23W
+1849-02-01     27.434                    1.362                          Abidjan    Côte D'Ivoire  5.63N     3.23W
+1849-03-01     28.101                    1.612                          Abidjan    Côte D'Ivoire  5.63N     3.23W
+1849-04-01     26.14                     1.387                          Abidjan    Côte D'Ivoire  5.63N     3.23W
+1849-05-01     25.427                    1.2                            Abidjan    Côte D'Ivoire  5.63N     3.23W
+
+The fourth file builds upon the major cities and cities data in GlobalLandTemperaturesbyState.csv:
+dt             AverageTemperature        AverageTemperatureUncertainty  State    Country
+1855-05-01     25.544                    1.171                          Acre     Brazil
+1855-06-01     24.228                    1.103                          Acre     Brazil
+1855-07-01     24.371                    1.044                          Acre     Brazil
+1855-08-01     25.427                    1.073                          Acre     Brazil
+1855-09-01     25.675                    1.014                          Acre     Brazil
+
+And the final file is simply gloabl data that includes land and ocean avergaes in GlobalTemperatures.csv:
+dt             LandAverageTemperature LandAverageTemperatureUncertainty LandMaxTemperature LandMaxTemperatureUncertainty LandMinTemperature LandMinTemperatureUncertainty LandAndOceanAverageTemperature LandAndOceanAverageTemperatureUncertainty
+1850-01-01     0.749                  1.105                             8.242              1.738                         -3.206             2.822                         12.833                         0.367
+1850-02-01     3.071                  1.275                             9.97               3.007                         -2.291             1.623                         13.588                         0.414
+1850-03-01     4.954                  0.955                             10.347             2.401                         -1.905             1.41                          14.043                         0.341
+1850-04-01     7.217                  0.665                             12.934             1.004                          1.018             1.329                         14.667                         0.267
+1850-05-01     10.004                 0.617                             15.655             2.406                          3.811             1.347                         15.507                         0.249
+
+Some shared attributes are dates (dt), averageTemperature and AverageTemperatureUncertainty between all the files. As there
+is a clear hierarchy between city, major city, state, and country, there is a potential for creating a one-to-many 
+relationship between the country file and the others. 
+
+
+Secondary Dataset: Health Nutrition and Population Statistics
+
+This dataset contains nutrition and population statistics across various demographics for countries starting from 1960 to 2015. 
+It consists of various metrics of health that will be prioritized and split up into different tables. 
+There is only 1 43 MB file of 89,010 records and a considerable amount of processing will be necessary to create tables 
+for metrics of interest. The attributes are the metrics tracked, the country, and the years from 1960 to 2015. 
+
+The file can be downloaded from Kaggle at the following link:
+https://www.kaggle.com/theworldbank/health-nutrition-and-population-statistics
+
+A quick note regarding these statistics: all rates are in for per 1000 people, unless specified as a percentage. 
+
+The HealthNutrition.csv file has 59 attributes; a sample is shown below for only the first three years:
+
+Country Name        Country Code        Indicator Name            Indicator Code        1960     1961      1962
+Arab World          ARB                 Fertility rate, total     SH.DYN.TFRT.IN        6.924    6.946     6.964
+Australia           AUS                 Infant Mortality rate     SP.DYN.IMRT.IN        20.3     20        19.5
+Lithuania           LTU                 % Population, Female 0-14 SP.POP.0014.FE.ZS     24.825   24.857    24.874
+Senegal             SEN                 Life expectancy at birth  SP.DYN.LE00.FE.IN     38.983   39.151    39.244
+Sweden              SWE                 Mortality rate, female    SP.DYN.AMRT.FE        95.043   89.877    87.736
+

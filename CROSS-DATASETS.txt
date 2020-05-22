@@ -1,0 +1,19 @@
+The following are proposed queries to be conducted between the primary and secondary datasets:
+
+- This query would join the Health_Statistics and Country_Beam_DF on the countryName and Country attributes of the
+respective tables and display the life expectancy and malnutrition rate over time for selected countries in Asia.
+This would require altering the records of the Health_Statistics table to include a date column; 
+i.e. shifting the year attributes to be compiled into a single attribute called date and just making a 
+record for each year, rather than having each year be an attribute. Referential integrity would also have to be
+checked with the Country_Beam_DF being the parent table.
+
+- Another potential query would join the Life_Statistics and Urban_Growth_Statistics with the Country_Beam_DF table 
+to display the change in urban population and the mortality rate for each country over time. It would require a 
+similar transformation with changing each year to a record rather than attribute. This would be an interesting
+visualization to determine if there is a correlation. 
+
+-Another query would be joining the Population_Statistics and Date table, averaging all the country growth rates in 
+the first table and joining on dates. This would be difficult as the Population_Statistics date attribute would
+be just a year so we'd have to average the attributes of the Date table accordingly. This would once again 
+require the transformation to make each record in the Population_Statistics table to have a single date attribute
+rather than 55 columns for each year. 
